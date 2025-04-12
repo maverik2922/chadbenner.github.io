@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Personal Blog</title>
+  <style>
+    :root {
+      --tan: #cfbe97;
+      --gold: #b19552;
+      --gray-light: #a6a7a6;
+      --gray-mid: #666d7d;
+      --gray-dark: #394155;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      background-color: var(--tan);
+      color: var(--gray-dark);
+    }
+
+    header {
+      background: var(--gray-dark);
+      color: var(--tan);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background: var(--gray-mid);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--tan);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    main {
+      padding: 2rem;
+      background: var(--gray-light);
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+    }
+
+    h2 {
+      color: var(--gray-dark);
+    }
+
+    figure {
+      margin: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    figure img {
+      height: 200px;
+      margin: 0 0.5rem;
+      border-radius: 8px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: var(--gray-dark);
+      color: var(--tan);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--gold);
+    }
+
+    .socials a:hover {
+      color: var(--tan);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .pagination a {
+      color: var(--gray-dark);
+      background: var(--gold);
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      margin: 0 0.25rem;
+      border-radius: 5px;
+    }
+
+    .pagination a:hover {
+      background: var(--gray-dark);
+      color: var(--tan);
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--gray-mid);
+      border-radius: 4px;
+      font-family: inherit;
+    }
+
+    .contact-form button {
+      margin-top: 1rem;
+      background: var(--gold);
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .contact-form button:hover {
+      background: var(--gray-dark);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to My Blog</h1>
+  <p>Writings, photos, music, and more</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#blog">Blog</a>
+  <a href="#photos">Photos</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <h2>Blog</h2>
+    <div id="blog-posts"></div>
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+  <!-- Photo Section -->
+  <section id="photos">
+    <h2>Photo Slider</h2>
+    <figure>
+      <img src="photo1.jpg" alt="Photo 1">
+      <img src="photo2.jpg" alt="Photo 2">
+      <img src="photo3.jpg" alt="Photo 3">
+    </figure>
+  </section>
+
+  <!-- Audio Section -->
+  <section>
+    <h2>Audio Sample</h2>
+    <label>
+      <input type="checkbox" id="autoplayToggle" />
+      Autoplay
+    </label>
+    <audio id="blog-audio" controls>
+      <source src="audio1.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="contact-form">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 My Blog</p>
+  <div class="socials">
+    <a href="https://bsky.app/profile/chadbenner.com" target="_blank">@chadbenner.com on Bluesky</a>
+  </div>
+</footer>
+
+<script>
+  // Blog post rendering logic
+  const posts = [
+    {
+      title: "Post Title One",
+      date: "April 10, 2025",
+      content: "This is a sample blog post. Write freely and often."
+    },
+    {
+      title: "Post Title Two",
+      date: "April 5, 2025",
+      content: "Another example post with more detail and insight."
+    },
+    {
+      title: "Post Title Three",
+      date: "March 30, 2025",
+      content: "A thoughtful piece of writing goes here."
+    },
+    {
+      title: "Post Title Four",
+      date: "March 20, 2025",
+      content: "Ideas, stories, or rants—this is your space."
+    }
+  ];
+
+  const postsPerPage = 2;
+  let currentPage = 1;
+
+  function renderPosts(page) {
+    const blogContainer = document.getElementById("blog-posts");
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    blogContainer.innerHTML = "";
+
+    posts.slice(start, end).forEach(post => {
+      blogContainer.innerHTML += `
+        <article>
+          <h3>${post.title}</h3>
+          <p><em>${post.date}</em></p>
+          <p>${post.content}</p>
+        </article>
+      `;
+    });
+
+    renderPagination(page);
+  }
+
+  function renderPagination(page) {
+    const pagination = document.getElementById("pagination");
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+    pagination.innerHTML = "";
+
+    if (page > 1) {
+      pagination.innerHTML += `<a href="#" onclick="changePage(${page - 1})">« Prev</a>`;
+    }
+
+    for (let i = 1; i <= totalPages; i++) {
+      pagination.innerHTML += `<a href="#" onclick="changePage(${i})">${i}</a>`;
+    }
+
+    if (page < totalPages) {
+      pagination.innerHTML += `<a href="#" onclick="changePage(${page + 1})">Next »</a>`;
+    }
+  }
+
+  function changePage(page) {
+    currentPage = page;
+    renderPosts(page);
+  }
+
+  // Autoplay toggle
+  document.getElementById("autoplayToggle").addEventListener("change", function () {
+    const audio = document.getElementById("blog-audio");
+    audio.autoplay = this.checked;
+    audio.load();
+  });
+
+  // Contact form submission
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Form submitted! (This is a placeholder)");
+    this.reset();
+  });
+
+  // Initial load
+  renderPosts(currentPage);
+</script>
+
+</body>
+</html>
